@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.*;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan({"com.project.controller","com.project.mapper","com.project.exception"})
+@ComponentScan({"com.project.controller"})
 public class WebConfig implements WebMvcConfigurer {
 
 
