@@ -4,6 +4,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 /**
  * Description
+ * spring的初始化类，用来加载各种配置文件
  * @Author：阿牛
  * @Date：Created in 2023/9/11 19:33
  */
@@ -12,7 +13,7 @@ public class SpringIocInit extends AbstractAnnotationConfigDispatcherServletInit
     //ioc容器的配置类
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{DataSourceConfig.class, MapperConfig.class, ServiceConfig.class};
+        return new Class[]{DataSourceConfig.class, MapperConfigNew.class, ServiceConfig.class,SwaggerConfig.class};
     }
 
     @Override

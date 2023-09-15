@@ -1,13 +1,7 @@
 package com.project.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.github.pagehelper.PageInterceptor;
-import org.apache.ibatis.logging.slf4j.Slf4jImpl;
-import org.apache.ibatis.session.AutoMappingBehavior;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -19,7 +13,7 @@ import java.util.Properties;
 
 /**
  * Description
- * 持久层配置类：连接池，sqlSessionFactory，Mapper代理对象
+ * 持久层配置类：sqlSessionFactory，Mapper代理对象
  * @Author：阿牛
  * @Date：Created in 2023/9/11 16:53
  */
@@ -30,10 +24,10 @@ public class MapperConfig {
     //sqlSessionFactory加入ioc容器
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        //指定数据库连接池对象
         sqlSessionFactoryBean.setDataSource(dataSource);
         Resource resource = new ClassPathResource("mybatis-config.xml");
         sqlSessionFactoryBean.setConfigLocation(resource);
-
 //        org.apache.ibatis.session.Configuration configuration
 //                = new org.apache.ibatis.session.Configuration();
 //        //开启驼峰映射
@@ -53,7 +47,6 @@ public class MapperConfig {
 //        properties.setProperty("helperDialect","mysql");
 //        pageInterceptor.setProperties(properties);
 //        sqlSessionFactoryBean.setPlugins(pageInterceptor);
-
         return sqlSessionFactoryBean;
     }
 

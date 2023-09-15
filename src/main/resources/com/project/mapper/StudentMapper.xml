@@ -6,4 +6,25 @@
     <select id="queryAll" resultType="Student">
         select * from Student;
     </select>
+
+    <select id="queryList" resultType="Student">
+        select s.s_id,s.s_name,s.s_password,s.s_gender,s.s_phone,s.s_email,c.c_name
+        from Student s left join class c
+            on s.c_id = c.c_id
+    </select>
+
+    <delete id="delete">
+        delete from Student where s_id = #{id}
+    </delete>
+
+    <insert id="insert">
+        insert into Student(s_name,s_password,s_gender,s_phone,s_email,c_id)
+        values (#{sName},#{sPassword},#{sGender},#{sPhone},#{sEmail},#{cId})
+    </insert>
+
+    <update id="update">
+        update Student set s_name=#{sName},s_password=#{sPassword},s_gender=#{sGender},
+                           s_phone=#{sPhone},s_email=#{sEmail},c_id=#{cId}
+            where s_id = #{sId}
+    </update>
 </mapper>

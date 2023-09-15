@@ -1,8 +1,12 @@
 package com.project.config;
 
+import com.project.utils.LoginInterceptor;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.CacheControl;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * Description
@@ -19,14 +23,20 @@ import org.springframework.web.servlet.config.annotation.*;
 @ComponentScan({"com.project.controller"})
 public class WebConfig implements WebMvcConfigurer {
 
-
     /**
      * 视图解析器，指定前后缀，可以快速添加前后缀，后期返回字符串即可。
-     * @param registry
+     * @param
      */
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp("/WEB-INF/*",".html");
+//    @Override
+//    public void configureViewResolvers(ViewResolverRegistry registry) {
+////        registry.jsp("/WEB-INF/*",".jsp");
+//
+//    }
+    public ViewResolver viewResolver(){
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/*");
+        resolver.setSuffix(".html");
+        return  resolver;
     }
 
     /**
@@ -44,8 +54,15 @@ public class WebConfig implements WebMvcConfigurer {
      */
 //    @Override
 //    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor()   //拦截器的类
-//                .addPathPatterns()  //拦截器包含的路径
-//                .excludePathPatterns(); //排除的路径
+//        registry.addInterceptor(new LoginInterceptor());   //拦截器的类
+////                .addPathPatterns()  //拦截器包含的路径
+////                .excludePathPatterns(); //排除的路径
+//    }
+
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("ssm/swagger/**")
+//                .addResourceLocations("classpath:/WEB-INF/resource/swagger/")
+//                .setCacheControl(CacheControl.noCache());;
 //    }
 }

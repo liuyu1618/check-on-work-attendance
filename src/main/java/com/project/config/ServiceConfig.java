@@ -16,6 +16,7 @@ import javax.sql.DataSource;
  *  1.加载service进ioc容器
  *  2.开启aop注解的支持
  *  3.tx声明式事务管理
+ *  4.增强类也是在这里开启包扫描
  * @Author：阿牛
  * @Date：Created in 2023/9/11 16:41
  */

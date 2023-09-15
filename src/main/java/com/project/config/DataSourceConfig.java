@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 
 /**
  * Description
- *
+ * 连接池配置类
  * @Author：阿牛
  * @Date：Created in 2023/9/11 19:16
  */

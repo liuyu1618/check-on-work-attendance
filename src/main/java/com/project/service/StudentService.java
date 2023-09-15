@@ -1,6 +1,7 @@
 package com.project.service;
 
 import com.project.pojo.Student;
+import com.project.utils.R;
 
 import java.util.List;
 
@@ -12,4 +13,12 @@ import java.util.List;
  */
 public interface StudentService {
     List<Student> findAll();
+
+    R page(int pageSize, int currentPage);
+
+    R remove(int id);
+
+    R save(Student student);
+
+    R update(Student student);
 }
